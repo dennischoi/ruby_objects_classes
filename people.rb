@@ -32,6 +32,11 @@ end
 
 chris = Instructor.new("Chris")
 puts chris.greet
+puts chris.teach
 
 christina = Student.new("Christina")
 puts christina.greet
+puts christina.learn
+
+# Chris cant access class from student because it doesn't inherit its attributes/method as it did greet (inherited from Parent class)
+# Same thing in Christina's case, can only inherit methods from class it is connected to
