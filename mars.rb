@@ -1,6 +1,6 @@
 
 class Rover
-attr_reader :input
+attr_reader :inputs
 
 DIRECTIONS = ["n", "e", "s", "w"]
 
@@ -14,27 +14,28 @@ DIRECTIONS = ["n", "e", "s", "w"]
   def read_instructions
     puts "Give me some instructions to move the Rover."
 
-    @input = gets.strip
-      @input.each_char do |i|
+    @inputs = gets.strip
+      @inputs.each_char do |i|
         case i
           when "l"
             @direction = DIRECTIONS[DIRECTIONS.find_index(@direction)-1]
             # Find_index method here is used to identify the place in the array that the direction is head... -1 is used to make sure it continues to go down the array, otherwise left. When it hits the first index of the array it goes back to the end of the array
 
           when "r"
-            @direction = DIRECTIONS[DIRECTIONS.find_index(@direction)-1)%4]
+            @direction = DIRECTIONS[(DIRECTIONS.find_index(@direction)+1) % 4]
 
             # When reaching the last point of the array of DIRECTIONS constant it will return to 0 because the modulo is used to make sure that when it hits 4 it will go down to 0
           when "m"
             move
           when "exit"
             break
+          end
         end
       end
 
 
     # read the input
-  end
+
 
   def move
     case @direction
@@ -52,7 +53,7 @@ DIRECTIONS = ["n", "e", "s", "w"]
     #move 1 space in direction
 
     def to_s
-  "#{@x_coordinate}, #{@y_coordinate} -> #{@direction}"
+      puts "#{@x_coordinate}, #{@y_coordinate} -> #{@direction}"
     end
 end
 
@@ -63,7 +64,7 @@ while true
     red.read_instructions
     puts red
 
-    if red.input == "exit"
+    if red.inputs == "exit"
         exit
     end
   end
