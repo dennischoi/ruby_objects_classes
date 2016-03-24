@@ -36,7 +36,18 @@ DIRECTIONS = ["n", "e", "s", "w"]
     # read the input
   end
 
-
+  def move
+    case @direction
+      when "n"
+        @y_coordinate += 1
+      when "s"
+        @y_coordinate -= 1
+      when "e"
+        @x_coordinate += 1
+      when "w"
+        @x_coordinate -= 1
+    end
+  end
 
     #move 1 space in direction
 
